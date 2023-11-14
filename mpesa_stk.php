@@ -5,9 +5,9 @@ $consumer_secret = 'b3tW2bzPllyjAL5K';
 $Business_Code = '174379';
 $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
 $Type_of_Transaction = 'CustomerPayBillOnline';
-$Token_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'; // Replace with the production token URL
-$OnlinePayment = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'; // Replace with the production STK push URL
-$CallBackURL = 'https://dc8f-197-232-7-202.ngrok-free.app/callback.php'; // Replace with your actual callback URL
+$Token_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
+$OnlinePayment = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+$CallBackURL = 'https://dc8f-197-232-7-202.ngrok-free.app/callback.php';
 
 // Data from the checkout page
 $phone_number = $_POST['phone_number'];
@@ -39,8 +39,8 @@ $data = [
     'PartyB' => $Business_Code,
     'PhoneNumber' => $phone_number,
     'CallBackURL' => $CallBackURL,
-    'AccountReference' => 'Lolwe Auction & Bidding Payment',
-    'TransactionDesc' => 'Test Payment via M-Pesa STK Push API',
+    'AccountReference' => 'Jack', // Modify as needed
+    'TransactionDesc' => 'Test',  // Modify as needed
 ];
 
 $data_string = json_encode($data);
