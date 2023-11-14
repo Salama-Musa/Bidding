@@ -1,89 +1,55 @@
 <?php
-// Retrieve the captured details
-$img = $_POST['img'];
-$name = $_POST['name'];
-$category = $_POST['category'];
-$startBid = $_POST['startBid'];
-$bidEndDatetime = $_POST['bidEndDatetime'];
-$description = $_POST['description'];
-
-// Add your payment logic here
-// ...
-
+include 'admin/db_connect.php';
+session_start();
+if (isset($_POST['id'])) {
+    foreach ($_POST as $k => $val) {
+        $$k = $val;
+    }
+}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Your Order</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Make Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
-
     <div class="container mt-5">
-        <h1 class="text-center mb-4">View Your Order</h1>
-        <div class="row">
+        <div class="row justify-content-center align-items-center">
             <div class="col-md-6">
-                <img src="<?php echo $img; ?>" alt="Item Image" class="img-fluid">
+                <img src="<?php echo $img ?>" class="img-fluid" alt="Product Image">
             </div>
             <div class="col-md-6">
-                <table class="table">
-                    <tr>
-                        <td>Name:</td>
-                        <td><?php echo $name; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Category:</td>
-                        <td><?php echo $category; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Starting Amount:</td>
-                        <td>KES<?php echo $startBid; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Bid End Date:</td>
-                        <td><?php echo $bidEndDatetime; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Description:</td>
-                        <td><?php echo $description; ?></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+                <h2 class="mt-3"><?php echo $name ?></h2>
+                <p><strong>Category:</strong> <?php echo $category ?></p>
+                <p><strong>Amount to be Paid:</strong> <?php echo number_format($startBid, 2) ?></p>
+                <p><strong>Description:</strong></p>
+                <p class="mb-4"><small><i><?php echo $description ?></i></small></p>
 
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label for="phone">Phone Number:</label>
-                                <input type="text" class="form-control form-control-sm" id="phone" name="phone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="location">Location:</label>
-                                <input type="text" class="form-control form-control-sm" id="location" name="location" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Item Price:</label>
-                                <input type="text" class="form-control form-control-sm" id="price" name="price" value="KES<?php echo $startBid; ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_name">Item Name:</label>
-                                <input type="text" class="form-control form-control-sm" id="item_name" name="item_name" value="<?php echo $name; ?>" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group text-right" style="margin-top: 30px;">
-                                <button type="submit" class="btn btn-success">Make Payment</button>
-                            </div>
-                        </div>
+                <!-- Add your payment processing button here -->
+                <form id="payment-form" action="process_payment.php" method="post">
+                    <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                    <input type="hidden" name="amount" value="<?php echo $startBid ?>">
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
                     </div>
+                    <button type="submit" class="btn btn-success">Pay Now</button>
+                    <button type="button" class="btn btn-danger" onclick="window.location.href='index.php'">Cancel</button>
                 </form>
             </div>
         </div>
     </div>
 
+    <!-- Add the full version of Bootstrap JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
+</html>
