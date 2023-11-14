@@ -26,6 +26,7 @@ $category = $cat_qry->num_rows > 0 ? $cat_qry->fetch_array()['name'] : '' ;
 	<p class=""><small><i><?php echo $description ?></i></small></p>
 	<div class="col-md-12">
 		<button class="btn btn-primary btn-block btn-sm" type="button" id="bid">Bid</button>
+		<button class="btn btn-secondary btn-block btn-sm" type="button" id="buy_now">Buy Now</button>
 	</div>
 	<div id="bid-frm">
 		<div class="col-md-12">

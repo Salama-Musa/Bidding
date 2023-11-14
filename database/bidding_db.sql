@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2020 at 09:51 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Nov 14, 2023 at 10:07 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,7 +43,8 @@ CREATE TABLE `bids` (
 
 INSERT INTO `bids` (`id`, `user_id`, `product_id`, `bid_amount`, `status`, `date_created`) VALUES
 (2, 5, 1, 7500, 1, '2020-10-27 14:18:50'),
-(4, 5, 3, 155000, 1, '2020-10-27 16:37:29');
+(4, 5, 3, 155000, 1, '2020-10-27 16:37:29'),
+(5, 6, 4, 10000, 1, '2023-11-06 14:57:13');
 
 -- --------------------------------------------------------
 
@@ -89,8 +91,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `start_bid`, `regular_price`, `bid_end_datetime`, `img_fname`, `date_created`) VALUES
-(1, 5, 'Sample Smart Phone', 'Sample only', 7000, 7000, '2020-10-27 19:00:00', '1.jpg', '2020-10-27 09:50:54'),
-(3, 1, 'Gadget Package', 'Sample ', 150000, 15000, '2020-10-27 17:00:00', '3.jpg', '2020-10-27 09:59:39');
+(4, 5, 'phone', 'brand new', 8000, 10000, '2023-11-10 14:54:00', '4.png', '2023-11-06 14:54:53');
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,7 @@ CREATE TABLE `system_settings` (
 --
 
 INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `cover_img`, `about_content`) VALUES
-(1, 'Lolwe Online Bidding and Auction System', 'info@sample.com', '+25412345678', '1603344720_1602738120_pngtree-purple-hd-business-banner-image_5493.jpg', '&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-weight: 400; text-align: justify;&quot;&gt;&amp;nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;');
+(1, 'Lolwe Online Bidding and Auction System', 'info@sample.com', '+25412345678', '1603344720_1602738120_pngtree-purple-hd-business-banner-image_5493.jpg', '<div> <p class=\"text-dark\">Welcome to Lolwe Bidding and Auction, your premier online auction and bidding platform. We are a technology company dedicated to connecting buyers and sellers through innovative auction solutions.</p> <p class=\"text-dark\">Created in 2023, Lolwe Bidding and Auction was founded to make the auction process simple, transparent, and accessible to everyone. Our user-friendly platform and robust bidding tools allow anyone to easily list items for auction, place competitive bids, and complete transactions seamlessly.</p> <p class=\"text-dark\">At Lolwe Bidding and Auction, we are passionate about using technology to modernize and improve the traditional auction model. Our platform utilizes cutting-edge features like automated bid extensions, real-time notifications, and secure checkout to create a premier bidding experience.</p> <p class=\"text-dark\">Join our community of registered users and see what sets us apart in the auction industry when we launch soon.</p> </div>');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `contact`, `address`, `type`, `date_created`) VALUES
 (1, 'Administrator', 'admin', '0192023a7bbd73250516f069df18b500', 'admin@admin.com', '+123456789', '', 1, '2020-10-27 09:19:59'),
-(5, 'John Smith', 'jsmith', '1254737c076cf867dc53d60a0364f38e', 'jsmith@sample.com', '+18456-5455-55', 'Sample', 2, '2020-10-27 14:18:32');
+(6, 'test user', 'testuser', '5d9c68c6c50ed3d02a2fcf54f63993b6', 'test123@gmail.com', '0112407259', 'nakuru', 2, '2023-11-06 14:56:57');
 
 --
 -- Indexes for dumped tables
@@ -182,7 +183,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bids`
 --
 ALTER TABLE `bids`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -194,7 +195,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -206,7 +207,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
