@@ -1,35 +1,21 @@
 <?php
+// Read the raw data from the request
+$callback_data = file_get_contents("php://input");
 
-// Retrieve the callback data
-$callbackData = file_get_contents('php://input');
+// Decode the JSON data
+$transaction_data = json_decode($callback_data, true);
 
-// Log the callback data (you can modify this to store data in a database or perform other actions)
-file_put_contents('callback_log.txt', $callbackData . PHP_EOL, FILE_APPEND);
+// Check the transaction status
+$result_code = $transaction_data['Body']['stkCallback']['ResultCode'];
 
-// Decode the JSON callback data
-$callbackDataArray = json_decode($callbackData, true);
-
-// Check if the errorCode is present in the callback data
-if (isset($callbackDataArray['errorCode'])) {
-    // Handle the error
-    $errorResponse = [
-        'ResultCode' => $callbackDataArray['errorCode'],
-        'ResultDesc' => $callbackDataArray['errorMessage'],
-    ];
-
-    // Log the error response
-    file_put_contents('error_log.txt', json_encode($errorResponse) . PHP_EOL, FILE_APPEND);
-
-    // Send a response to Safaricom with the error details
-    header('Content-Type: application/json');
-    echo json_encode($errorResponse);
+if ($result_code == 0) {
+    // Payment successful
+    // Update your system accordingly
+    // You might want to save relevant transaction details in your database
+    echo "Payment successful";
 } else {
-    // If no error, send a success response to Safaricom
-    $successResponse = [
-        'ResultCode' => 0,
-        'ResultDesc' => 'Callback received successfully',
-    ];
-
-    header('Content-Type: application/json');
-    echo json_encode($successResponse);
+    // Payment failed or was cancelled
+    // Handle accordingly
+    echo "Payment failed or cancelled";
 }
+?>
