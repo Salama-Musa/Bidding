@@ -1,4 +1,3 @@
-
 <?php
 include 'admin/db_connect.php';
 session_start();
@@ -32,7 +31,7 @@ if (isset($_POST['id'])) {
                 <p class="mb-4"><small><i><?php echo $description ?></i></small></p>
 
                 <!-- Update the form action and add a hidden input field for session data -->
-                <form id="payment-form" action="express_stk.php" method="post">
+                <form id="payment-form" action="mpesa_stk.php" method="post">
                     <input type="hidden" name="product_id" value="<?php echo $id ?>">
                     <input type="hidden" name="amount" value="<?php echo $startBid ?>">
                     <input type="hidden" name="unique_id" value="<?php echo uniqid('payment_') ?>">
@@ -43,7 +42,8 @@ if (isset($_POST['id'])) {
                     
                     <div class="form-group">
                         <label for="phone_number">Phone Number</label>
-                        <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" pattern="^254\d{9}$" required>
+                        <small class="form-text text-muted">Please enter a valid Kenyan phone number starting with 254.</small>
                     </div>
                     
                     <!-- Your existing payment button with a unique ID -->
@@ -59,5 +59,3 @@ if (isset($_POST['id'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
-
