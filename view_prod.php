@@ -119,7 +119,7 @@ if(isset($_GET['id'])){
         };
 
         // Open a new page with captured details
-        var form = $('<form action="makepayment.php" method="post"></form>');
+        var form = $('<form action="checkout.php" method="post"></form>');
         $.each(productDetails, function(key, value){
             form.append('<input type="hidden" name="'+key+'" value="'+value+'">');
         });
