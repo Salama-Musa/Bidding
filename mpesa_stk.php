@@ -2,7 +2,7 @@
 // Initialize the variables
 $consumer_key = 'AgBlCCEtFV3jWYG3aVhWpDzzpV45aAfc';
 $consumer_secret = 'b3tW2bzPllyjAL5K';
-$Business_Code = '174379';
+$Business_Code = '174379'; //8842212  //174379
 $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
 $Type_of_Transaction = 'CustomerPayBillOnline';
 $Token_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
@@ -39,7 +39,7 @@ $data = [
     'PartyB' => $Business_Code,
     'PhoneNumber' => $phone_number,
     'CallBackURL' => $CallBackURL,
-    'AccountReference' => 'Jack', // Modify as needed
+    'AccountReference' => 'ABIGAEL SALAMA', // Modify as needed
     'TransactionDesc' => 'Test',  // Modify as needed
 ];
 

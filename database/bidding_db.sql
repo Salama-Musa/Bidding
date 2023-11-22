@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 10:07 AM
+-- Generation Time: Nov 14, 2023 at 09:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -44,7 +44,8 @@ CREATE TABLE `bids` (
 INSERT INTO `bids` (`id`, `user_id`, `product_id`, `bid_amount`, `status`, `date_created`) VALUES
 (2, 5, 1, 7500, 1, '2020-10-27 14:18:50'),
 (4, 5, 3, 155000, 1, '2020-10-27 16:37:29'),
-(5, 6, 4, 10000, 1, '2023-11-06 14:57:13');
+(5, 6, 4, 10000, 1, '2023-11-06 14:57:13'),
+(6, 8, 7, 100, 1, '2023-11-14 23:14:18');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `start_bid`, `regular_price`, `bid_end_datetime`, `img_fname`, `date_created`) VALUES
-(4, 5, 'phone', 'brand new', 8000, 10000, '2023-11-10 14:54:00', '4.png', '2023-11-06 14:54:53');
+(5, 5, 'Iphone 15 Pro', 'New', 1, 10000, '2024-01-14 12:18:00', '5.webp', '2023-11-14 12:12:38'),
+(6, 5, 'Galaxy S23 Ultra', '8GB RAM/256 ROM', 1, 8900, '2024-01-14 12:18:00', '6.avif', '2023-11-14 12:13:30'),
+(7, 5, 'Apple-iPhone-15-Pro-Max', 'Apple-iPhone-15-Pro-Max Titanium', 1, 1000, '2024-01-14 12:18:00', '7.webp', '2023-11-14 12:17:55');
 
 -- --------------------------------------------------------
 
@@ -139,7 +142,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `contact`, `address`, `type`, `date_created`) VALUES
 (1, 'Administrator', 'admin', '0192023a7bbd73250516f069df18b500', 'admin@admin.com', '+123456789', '', 1, '2020-10-27 09:19:59'),
-(6, 'test user', 'testuser', '5d9c68c6c50ed3d02a2fcf54f63993b6', 'test123@gmail.com', '0112407259', 'nakuru', 2, '2023-11-06 14:56:57');
+(6, 'test user', 'testuser', '5d9c68c6c50ed3d02a2fcf54f63993b6', 'test123@gmail.com', '0112407259', 'nakuru', 2, '2023-11-06 14:56:57'),
+(7, 'Abigael Salama ', 'Salama', '25d55ad283aa400af464c76d713c07ad', 'abigaelmusa@kabarak.ac.ke', '+254798798489', 'P.O Box 918-90100', 1, '2023-11-14 23:11:45'),
+(8, 'Test1', 'test1', '5d9c68c6c50ed3d02a2fcf54f63993b6', 'test1@mail.com', '25423456789', 'Nakuru', 2, '2023-11-14 23:13:53');
 
 --
 -- Indexes for dumped tables
@@ -183,7 +188,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bids`
 --
 ALTER TABLE `bids`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -195,7 +200,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -207,7 +212,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
